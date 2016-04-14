@@ -6,13 +6,20 @@
 #include "stdafx.h"
 #include "cube.h"
 #include <fstream>
+#include <vector>
+#include "Player.h"
+
+
+
+
 
 using namespace std;
 
 int main()
 {
 	ifstream source("source.txt");
-	int PosBuffer[25][3];
+	ifstream target("target.txt");
+	//int PosBuffer[25][3];
 	if (!source) 
 	{
 		cerr << "Can't open source.txt\n" << endl;
@@ -20,7 +27,7 @@ int main()
 	}
 
 	int input[3][3][3];
-	int CurrentState[3][3][3];
+	//int CurrentState[3][3][3];
 	int BlankPosx=0, BlankPosy=0,BlankPosz=0;
 
 	for (int i = 0; i < 3; i++)
@@ -40,6 +47,21 @@ int main()
 		}
 	}
 
+	if (!target)
+	{
+		cerr << "Can't open target.txt\n" << endl;
+		exit(-1);
+	}
+
+	int goal[3][3][3];
+
+	for (int i = 0; i < 3; i++)
+	{
+		for (int j = 0; j < 3; j++)
+		{
+			target >> goal[i][j][0] >> goal[i][j][1] >> goal[i][j][2];
+		}
+}
 #ifdef PRINT_INPUT
 	for (int i = 0; i < 3; i++)
 	{
@@ -56,7 +78,7 @@ int main()
 #endif // PRINT_INPUT
 
 
-	Cube cube(input);
+	/*Cube cube(input);
 	cube.getState(CurrentState, PosBuffer);
 
 	cube.show();
@@ -82,7 +104,13 @@ int main()
 			cout << PosBuffer[i][j];
 		}
 		cout << endl;
-	}
+	}*/
+
+	Player play;
+	play.setGoal(goal);
+	play.init(input);
+	play.playAS('1');
+
 	system("pause");
     return 0;
 }

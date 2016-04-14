@@ -16,6 +16,15 @@
   </ItemGroup>
   <ItemGroup>
     <Text Include="ReadMe.txt" />
+    <Text Include="source.txt">
+      <Filter>资源文件</Filter>
+    </Text>
+    <Text Include="target.txt">
+      <Filter>资源文件</Filter>
+    </Text>
+    <Text Include="初始状态.txt">
+      <Filter>资源文件</Filter>
+    </Text>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h">
@@ -27,6 +36,9 @@
     <ClInclude Include="cube.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="Player.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -36,6 +48,9 @@
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="cube.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Player.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>

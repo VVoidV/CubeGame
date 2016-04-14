@@ -8,11 +8,11 @@ Cube::Cube()
 
 }
 
-void Cube::setState(int input[][3][3])
+void Cube::setState(const int input[][3][3])
 {
 	memcpy(state, input, sizeof(int) * 27);
 	setIndex();
-	cout << "set done!" << endl;
+	//cout << "set done!" << endl;
 }
 
 void Cube::getState(int dest[][3][3],int PosBuffer[][3])
@@ -29,21 +29,23 @@ void Cube::setIndex()
 		{
 			for (int k = 0; k < 3; k++)
 			{
-				posIndex[state[i][j][k]][0] = i;
-				posIndex[state[i][j][k]][1] = j;
-				posIndex[state[i][j][k]][2] = k;
-				pos_x = posIndex[0][0];
-				pos_y = posIndex[0][1];
-				pos_z = posIndex[0][2];
-				
+				if (state[i][j][k]>=0)
+				{
+					posIndex[state[i][j][k]][0] = i;
+					posIndex[state[i][j][k]][1] = j;
+					posIndex[state[i][j][k]][2] = k;
+				}										
 			}
 		}
 	}
+	pos_x = posIndex[0][0];
+	pos_y = posIndex[0][1];
+	pos_z = posIndex[0][2];
 }
 
-int Cube::move(const char action)
+bool Cube::move(const char action)
 {
-	
+	bool isLeagal=0;
 	switch (action)
 	{
 	case 'U':
@@ -56,10 +58,11 @@ int Cube::move(const char action)
 			state[pos_x][pos_y - 1][pos_z] = 0;
 			posIndex[0][1]--;
 			pos_y --;
+			isLeagal = 1;
 		}
 		else
 		{
-			cerr << "now UP is illegal move" << endl;
+			//cerr << "now UP is illegal move" << endl;
 		}
 		break;
 
@@ -73,10 +76,11 @@ int Cube::move(const char action)
 			state[pos_x][pos_y + 1][pos_z] = 0;
 			posIndex[0][1]++;
 			pos_y ++;
+			isLeagal = 1;
 		}
 		else
 		{
-			cerr << "now Down is illegal move" << endl;
+			//cerr << "now Down is illegal move" << endl;
 		}		
 		break;
 
@@ -90,10 +94,11 @@ int Cube::move(const char action)
 			state[pos_x][pos_y][pos_z - 1] = 0;
 			posIndex[0][2]--;
 			pos_z--;
+			isLeagal = 1;
 		}
 		else
 		{
-			cerr << "now Left is illegal move" << endl;
+			//cerr << "now Left is illegal move" << endl;
 		}
 		break;
 
@@ -107,10 +112,11 @@ int Cube::move(const char action)
 			state[pos_x][pos_y][pos_z + 1] = 0;
 			posIndex[0][2]++;
 			pos_z++;
+			isLeagal = 1;
 		}
 		else
 		{
-			cerr << "now Right is illegal move" << endl;
+			//cerr << "now Right is illegal move" << endl;
 		}
 		break;
 
@@ -123,10 +129,11 @@ int Cube::move(const char action)
 			state[pos_x - 1][pos_y][pos_z] = 0;
 			posIndex[0][0]--;
 			pos_x--;
+			isLeagal = 1;
 		}
 		else
 		{
-			cerr << "now Forward is illegal move" << endl;
+			//cerr << "now Forward is illegal move" << endl;
 		}
 		break;
 
@@ -140,17 +147,18 @@ int Cube::move(const char action)
 			state[pos_x + 1][pos_y][pos_z] = 0;
 			posIndex[0][0]++;
 			pos_x++;
+			isLeagal = 1;
 		}
 		else
 		{
-			cerr << "now Back is illegal move" << endl;
+			//cerr << "now Back is illegal move" << endl;
 		}
 		break;
 	default:
-		cerr << "invalid action!" << endl;
-
+		//cerr << "invalid action!" << endl;
+		;
 	}
-	return 0;
+	return isLeagal;
 }
 
 void Cube::show()

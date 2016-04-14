@@ -10,9 +10,9 @@ private:
 public:
 	Cube(int input[][3][3]);
 	Cube();
-	void setState(int input[][3][3]);
+	void setState(const int input[][3][3]);
 	void getState(int dest[][3][3], int PosBuffer[][3]);
-	int move(const char action);
+	bool move(const char action);
 	void show();
 	void getPos(int dest[][3]);
 };
