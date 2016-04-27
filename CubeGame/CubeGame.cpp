@@ -8,7 +8,7 @@
 #include <fstream>
 #include <vector>
 #include "Player.h"
-
+#include<time.h>
 
 
 
@@ -17,6 +17,11 @@ using namespace std;
 
 int main()
 {
+	time_t begin, end;
+// 	LARGE_INTEGER  frec,start,end;
+// 	QueryPerformanceFrequency(&frec);
+// 	QueryPerformanceCounter(&start);
+	begin=clock();
 	ifstream source("source.txt");
 	ifstream target("target.txt");
 	//int PosBuffer[25][3];
@@ -25,7 +30,8 @@ int main()
 		cerr << "Can't open source.txt\n" << endl;
 		exit(-1);
 	}
-
+	char cgoal[3][3][3];
+	char cinput[3][3][3];
 	int input[3][3][3];
 	//int CurrentState[3][3][3];
 	int BlankPosx=0, BlankPosy=0,BlankPosz=0;
@@ -44,6 +50,11 @@ int main()
 			cout <<"***"<< buffer << endl;
 			sscanf_s(buffer, "%d%d%d", &input[i][j][0], &input[i][j][1], &input[i][j][2]);*/
 			source >> input[i][j][0] >> input[i][j][1] >> input[i][j][2];
+
+			cinput[i][j][0] = input[i][j][0];
+			cinput[i][j][1] = input[i][j][1];
+			cinput[i][j][2] = input[i][j][2];
+
 		}
 	}
 
@@ -60,6 +71,10 @@ int main()
 		for (int j = 0; j < 3; j++)
 		{
 			target >> goal[i][j][0] >> goal[i][j][1] >> goal[i][j][2];
+			cgoal[i][j][0] = goal[i][j][0];
+			cgoal[i][j][1] = goal[i][j][1];
+			cgoal[i][j][2] = goal[i][j][2];
+
 		}
 }
 #ifdef PRINT_INPUT
@@ -107,10 +122,14 @@ int main()
 	}*/
 
 	Player play;
-	play.setGoal(goal);
-	play.init(input);
+	play.setGoal(cgoal);
+	play.init(cinput);
 	play.playAS('1');
-
+// 	QueryPerformanceCounter(&end);
+// 		double during = end - start;
+// 		cout<<(end-start)/frec
+	end = clock();
+	cout << end - begin << endl;
 	system("pause");
     return 0;
 }

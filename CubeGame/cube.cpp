@@ -8,17 +8,17 @@ Cube::Cube()
 
 }
 
-void Cube::setState(const int input[][3][3])
+void Cube::setState(const char input[][3][3])
 {
-	memcpy(state, input, sizeof(int) * 27);
+	memcpy(state, input, sizeof(state));
 	setIndex();
 	//cout << "set done!" << endl;
 }
 
-void Cube::getState(int dest[][3][3],int PosBuffer[][3])
+void Cube::getState(char dest[][3][3],char PosBuffer[][3])
 {
 	memcpy(PosBuffer, posIndex, sizeof(posIndex));
-	memcpy(dest, state, sizeof(int)*27);
+	memcpy(dest, state, sizeof(char)*27);
 }
 
 void Cube::setIndex()
@@ -178,14 +178,14 @@ void Cube::show()
 	}
 }
 
-void Cube::getPos(int dest[][3])
+void Cube::getPos(char dest[][3])
 {
 	memcpy(dest, posIndex, sizeof(posIndex));
 }
 
-Cube::Cube(int input[][3][3])
+Cube::Cube(char input[][3][3])
 {
-	memcpy(state, input, sizeof(int)*27);
+	memcpy(state, input, sizeof(state));
 	setIndex();
 	cout << "init!" << endl;
 }

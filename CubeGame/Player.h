@@ -12,13 +12,13 @@ class Player
 {
 private:
 	Cube cube;
-	int goal[3][3][3];
-	int goalPos[25][3];
+	char goal[3][3][3];
+	char goalPos[25][3];
 
 	struct Node
 	{
-		int state[3][3][3];
-		int posBuf[25][3];
+		char state[3][3][3];
+		char posBuf[25][3];
 		char action;
 		unsigned int parent;
 		unsigned int cost;
@@ -31,21 +31,23 @@ private:
 	deque<struct Node> vertex;
 	priority_queue<class miniNode> open;
 	unordered_set<string> closed;
+	unordered_set<string> isOpen;
 
 	unsigned int chooseNode();
 	void expandNode(unsigned int index);
 	bool isClosed(string tag);
-	bool goalTest(int state[][3][3]);
-	unsigned int h1(int state[][3][3]);
-	unsigned int h2(int pos[][3]);
+	bool notOpen(string tag);
+	bool goalTest(char state[][3][3]);
+	unsigned int h1(char state[][3][3]);
+	unsigned int h2(char pos[][3]);
 	void PrintSolution(unsigned int index);
 public:
 	Player();
 	~Player();
 	bool playAS(const char);
 	bool playIDAS(const char);
-	void setGoal(int state[][3][3]);
-	void init(int state[][3][3]);
+	void setGoal(char[][3][3]);
+	void init(char[][3][3]);
 	
 
 };
