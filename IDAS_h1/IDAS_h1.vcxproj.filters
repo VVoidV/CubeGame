@@ -41,10 +41,10 @@
     <ClCompile Include="stdafx.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="..\cube_h2\cube.cpp">
+    <ClCompile Include="IDAS_h1.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="IDAS_h2.cpp">
+    <ClCompile Include="..\cube_h2\cube.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>

@@ -23,7 +23,6 @@
     <Keyword>Win32Proj</Keyword>
     <RootNamespace>IDAS_h1</RootNamespace>
     <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
-    <ProjectName>IDAS_h2</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -155,7 +154,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\cube_h2\cube.cpp" />
-    <ClCompile Include="IDAS_h2.cpp" />
+    <ClCompile Include="IDAS_h1.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
