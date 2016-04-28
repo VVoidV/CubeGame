@@ -6,12 +6,16 @@ MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "CubeGame", "CubeGame\CubeGame.vcxproj", "{7E70F465-6BF6-42BD-BFEF-6FAA682F61C7}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{BAF93C11-7F63-4244-980A-35ED0794D3FC}"
+	ProjectSection(SolutionItems) = preProject
+		Performance1.psess = Performance1.psess
+	EndProjectSection
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "cube_h2", "cube_h2\cube_h2.vcxproj", "{7A39DD25-91D6-40DC-83EE-82427F63BC67}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "IDAS_h1", "IDAS_h1\IDAS_h1.vcxproj", "{C89C9E17-11EE-4ACD-9B67-2A2CEEC2226A}"
-EndProject
 Global
+	GlobalSection(Performance) = preSolution
+		HasPerformanceSessions = true
+	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
 		Debug|x86 = Debug|x86
@@ -35,14 +39,6 @@ Global
 		{7A39DD25-91D6-40DC-83EE-82427F63BC67}.Release|x64.Build.0 = Release|x64
 		{7A39DD25-91D6-40DC-83EE-82427F63BC67}.Release|x86.ActiveCfg = Release|Win32
 		{7A39DD25-91D6-40DC-83EE-82427F63BC67}.Release|x86.Build.0 = Release|Win32
-		{C89C9E17-11EE-4ACD-9B67-2A2CEEC2226A}.Debug|x64.ActiveCfg = Debug|x64
-		{C89C9E17-11EE-4ACD-9B67-2A2CEEC2226A}.Debug|x64.Build.0 = Debug|x64
-		{C89C9E17-11EE-4ACD-9B67-2A2CEEC2226A}.Debug|x86.ActiveCfg = Debug|Win32
-		{C89C9E17-11EE-4ACD-9B67-2A2CEEC2226A}.Debug|x86.Build.0 = Debug|Win32
-		{C89C9E17-11EE-4ACD-9B67-2A2CEEC2226A}.Release|x64.ActiveCfg = Release|x64
-		{C89C9E17-11EE-4ACD-9B67-2A2CEEC2226A}.Release|x64.Build.0 = Release|x64
-		{C89C9E17-11EE-4ACD-9B67-2A2CEEC2226A}.Release|x86.ActiveCfg = Release|Win32
-		{C89C9E17-11EE-4ACD-9B67-2A2CEEC2226A}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
