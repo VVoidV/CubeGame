@@ -17,8 +17,8 @@ private:
 
 	struct Node
 	{
-		char state[3][3][3];
-		char posBuf[25][3];
+		int state[3][3][3];
+		int posBuf[25][3];
 		char action;
 		unsigned int parent;
 		unsigned int cost;
@@ -37,9 +37,9 @@ private:
 	void expandNode(unsigned int index);
 	bool isClosed(string tag);
 	bool notOpen(string tag);
-	bool goalTest(char state[][3][3]);
-	unsigned int h1(char state[][3][3]);
-	unsigned int h2(char pos[][3]);
+	bool goalTest(int state[][3][3]);
+	unsigned int h1(int state[][3][3]);
+	unsigned int h2(int pos[][3]);
 	void PrintSolution(unsigned int index);
 public:
 	Player();

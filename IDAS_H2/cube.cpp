@@ -16,6 +16,51 @@ bool Node::move(char action)
 
 	bool isLeagal = false;
 	int testblockPos;
+
+	if (path.size() != 0)
+	{
+		switch (action)
+		{
+		case 'U':
+			if (path[path.size() - 1] == 'D')
+			{
+				return false;
+			}
+			break;
+		case'D':
+			if (path[path.size() - 1] == 'U')
+			{
+				return false;
+			}
+			break;
+		case'L':
+			if (path[path.size() - 1] == 'R')
+			{
+				return false;
+			}
+			break;
+		case 'R':
+			if (path[path.size() - 1] == 'L')
+			{
+				return false;
+			}
+			break;
+		case 'B':
+			if (path[path.size() - 1] == 'F')
+			{
+				return false;
+			}
+			break;
+		case 'F':
+			if (path[path.size() - 1] == 'B')
+			{
+				return false;
+			}
+			break;
+		default:
+			return false;
+		}
+	}
 	switch (action)
 	{
 	case 'U':

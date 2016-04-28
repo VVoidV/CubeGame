@@ -7,9 +7,8 @@
 #include <windows.h>
 #include <stack>
 #include<queue>
-#include <unordered_set>
 
-#define INF 200
+#define INF 200000
 
 #define PRINT_INPUT
 //#define DEBUG
@@ -30,7 +29,7 @@ void play(char source[][3][3], char target[][3][3])
 	char action[6] = { 'U','D','L','R','F','B' };
 
 
-	string stmp;
+	//string stmp;
 	//targetPos 0-24存储25块的位置，25，26存储障碍物位置
 	for (int i = 0; i < 3; i++)
 	{
@@ -91,18 +90,13 @@ void play(char source[][3][3], char target[][3][3])
 	int count = 0;
 	int limit = initNode.f;
 	int next_limit;
-	string tPath;
-
-
+	Node tmp;
+	stack<Node> fringe;
 
 	while (limit < INF)
 	{
-		priority_queue<Node> fringe;
-		unordered_set<string> inFringe;
-		inFringe.clear();
+		
 		fringe.push(initNode);
-		stmp = initNode.state;
-		inFringe.insert(stmp);
 		next_limit = INF;
 		bool isFound = false;
 
@@ -114,58 +108,35 @@ void play(char source[][3][3], char target[][3][3])
 
 
 			fringe.pop();
-			count++;
-			if (count % 500000 == 0)
+			//count++;
+			/*if (count % 500000 == 0)
 			{
-				cout << count << endl;
-			}
-			stmp = chosenNode.state;
-
+				cout << "count"<<count << endl;
+			}*/
 
 			if (chosenNode.f > limit)
 			{
 				next_limit = min(next_limit, chosenNode.f);
-				break;
+				//break;
 			}
 			else
 			{
-				if (goaltest(chosenNode))
+				if (chosenNode.h==0)
 				{
-					// 					if (!isFound)
-					// 					{
-					// 						//保存第一个解
-					// 						tPath = chosenNode.path;
-					// 						cout << '!' << tPath<<endl;
-					// 					}
-					// 					isFound = true;
-					// 
-					// 					if (tPath.length() > chosenNode.path.length())
-					// 					{
-					// 						tPath = chosenNode.path;
-					// 						cout << '!!' << tPath << endl;
-					// 						
-					// 					}
+					cout << "h=" << chosenNode.h << endl;
 					cout << chosenNode.path << endl;
 					cout << "步数: " << chosenNode.g << endl;
 					cout << "Node explored: " << count << endl;
 					return;
 				}
-
 				//expand the chosenNode
-				Node tmp = chosenNode;
+				tmp = chosenNode;
 				for (int i = 0; i < 6; i++)
 				{
 					//移动成功需要恢复临时节点到移动前状态
 					if (tmp.move(action[i]))
 					{
-
-						stmp = tmp.state;
-						if ((inFringe.find(stmp) == inFringe.end()))
-						{
-							fringe.push(tmp);
-							inFringe.insert(stmp);
-							//cout << 'h' << tmp.h << endl;
-						}
+						fringe.push(tmp);
 						tmp = chosenNode;
 					}
 				}//for
@@ -174,16 +145,8 @@ void play(char source[][3][3], char target[][3][3])
 
 
 		}//while(fringe.empty())
-		 // 		if (isFound)
-		 // 		{
-		 // 			cout << endl<<"最优解： ";
-		 // 			cout << tPath << endl;
-		 // 			cout << "步数: " << tPath.length() << endl;
-		 // 			cout << "Node explored: " << count << endl;
-		 // 			return;
-		 // 		}
 		limit = next_limit;
-		cout << limit << endl;
+		//cout << limit << endl;
 	}//while
 	cout << "Can't find solution!" << endl;
 }
@@ -262,7 +225,7 @@ int main()
 	QueryPerformanceCounter(&end);
 	auto during = end.QuadPart - start.QuadPart;
 	cout << (double)during * 1000 / frec.QuadPart << "ms" << endl;
-	system("pause");
+	//system("pause");
 	return 0;
 }
 

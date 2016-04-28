@@ -121,13 +121,32 @@ int main()
 		cout << endl;
 	}*/
 
-	Player play;
-	play.setGoal(cgoal);
-	play.init(cinput);
-	play.playAS('1');
+	//Player play;
+	//play.setGoal(cgoal);
+	//play.init(cinput);
+	//play.playAS('1');
 // 	QueryPerformanceCounter(&end);
 // 		double during = end - start;
 // 		cout<<(end-start)/frec
+
+	Cube cube;
+	cube.setState(input);
+	char c;
+	ifstream test("test.txt");
+	string path;
+	if (!test)
+	{
+		cout << "can not open test.txt" << endl;
+	}
+	test >> path;
+	cout << path;
+	for (int i=0;i<path.size();i++)
+	{
+		c = path[i];
+		cube.move(c);
+	}
+	cube.show();
+	
 	end = clock();
 	cout << end - begin << endl;
 	system("pause");

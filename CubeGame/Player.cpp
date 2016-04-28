@@ -22,8 +22,8 @@ void Player::expandNode(unsigned int index)
 	miniNode miniTmp;
 	char action[6] = { 'U','D','L','R','F','B' };
 
-	char state[3][3][3];
-	char posBuf[25][3];
+	int state[3][3][3];
+	int posBuf[25][3];
 	
 	for (int i = 0; i < 6; i++)
 	{
@@ -83,13 +83,13 @@ bool Player::notOpen(string tag)
 	return false;
 }
 
-bool Player::goalTest(char state[][3][3])
+bool Player::goalTest(int state[][3][3])
 {
 	
 	return !memcmp(state, goal,sizeof(goal));
 }
 
-unsigned int Player::h1(char state[][3][3])
+unsigned int Player::h1(int state[][3][3])
 {//不在位个数
 	int count = 0;
 	for (int i = 0; i < 3; i++)
@@ -108,7 +108,7 @@ unsigned int Player::h1(char state[][3][3])
 	return count;
 }
 
-unsigned int Player::h2(char pos[][3])
+unsigned int Player::h2(int pos[][3])
 {//曼哈顿距离
 	int dis=0;
 
@@ -222,7 +222,7 @@ void Player::init(char state[][3][3])
 		}
 	}
 	
-	char posIndex[25][3];
+	int posIndex[25][3];
 	for (int i = 0; i < 3; i++)
 	{
 		for (int j = 0; j < 3; j++)
@@ -245,5 +245,5 @@ void Player::init(char state[][3][3])
 	open.push(n);
 	isOpen.insert(t.tag);
 	vertex.push_back(t);
-	cube.setState(state);
+	//cube.setState(state);
 }
