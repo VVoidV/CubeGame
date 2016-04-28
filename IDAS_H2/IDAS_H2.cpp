@@ -8,7 +8,7 @@
 #include <stack>
 #include<queue>
 
-#define INF 200000
+#define INF 150
 
 #define PRINT_INPUT
 //#define DEBUG
@@ -17,10 +17,6 @@ int goal[3][3][3];
 char cgoal[3][3][3];
 int targetPos[27];
 
-bool operator<(const Node &lhs, const Node &rhs)
-{
-	return lhs.f > rhs.f;
-}
 
 void play(char source[][3][3], char target[][3][3])
 {
@@ -87,7 +83,7 @@ void play(char source[][3][3], char target[][3][3])
 
 
 
-	int count = 0;
+	long long count = 0;
 	int limit = initNode.f;
 	int next_limit;
 	Node tmp;
@@ -108,7 +104,7 @@ void play(char source[][3][3], char target[][3][3])
 
 
 			fringe.pop();
-			//count++;
+			count++;
 			/*if (count % 500000 == 0)
 			{
 				cout << "count"<<count << endl;
@@ -146,7 +142,7 @@ void play(char source[][3][3], char target[][3][3])
 
 		}//while(fringe.empty())
 		limit = next_limit;
-		//cout << limit << endl;
+		cout << limit << endl;
 	}//while
 	cout << "Can't find solution!" << endl;
 }
